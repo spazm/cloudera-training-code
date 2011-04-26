@@ -1,6 +1,12 @@
+import java.io.IOException;
+import java.util.StringTokenizer;
 import org.apache.hadoop.fs.Path;
 
-// xxx Import types for intermediate key and value, output key and value.
+// AverageWordLength Import types for intermediate key and value, output key and value.
+
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.FloatWritable;
+import org.apache.hadoop.io.Text;
 
 import org.apache.hadoop.mapred.FileInputFormat;
 import org.apache.hadoop.mapred.FileOutputFormat;
@@ -11,7 +17,7 @@ import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
-public class xxxDriver extends Configured implements Tool {
+public class AverageWordLengthDriver extends Configured implements Tool {
 
 	public int run(String[] args) throws Exception {
 	
@@ -23,27 +29,27 @@ public class xxxDriver extends Configured implements Tool {
 			System.exit(-1);
 		}
 
-		JobConf conf = new JobConf(getConf(), xxxDriver.class);
-		conf.setJobName("xxxDriver");
+		JobConf conf = new JobConf(getConf(), AverageWordLengthDriver.class);
+		conf.setJobName("AverageWordLengthDriver");
 
 		FileInputFormat.setInputPaths(conf, new Path(args[0]));
 		FileOutputFormat.setOutputPath(conf, new Path(args[1]));
 
-		conf.setMapperClass(xxxMapper.class);
-		conf.setReducerClass(xxxReducer.class);
+		conf.setMapperClass(AverageWordLengthMapper.class);
+		conf.setReducerClass(AverageWordLengthReducer.class);
 
-		conf.setMapOutputKeyClass(xxxType.class);
-		conf.setMapOutputValueClass(xxxType.class);
+		conf.setMapOutputKeyClass(Text.class);
+		conf.setMapOutputValueClass(IntWritable.class);
 
-		conf.setOutputKeyClass(xxxType.class);
-		conf.setOutputValueClass(xxxType.class);
+		conf.setOutputKeyClass(Text.class);
+		conf.setOutputValueClass(FloatWritable.class);
 
 		JobClient.runJob(conf);
 		return 0;
 	}
 		
 	public static void main(String[] args) throws Exception {
-		int exitCode = ToolRunner.run(new xxxDriver(), args);
+		int exitCode = ToolRunner.run(new AverageWordLengthDriver(), args);
 		System.exit(exitCode);
 	}
 }
