@@ -1,13 +1,7 @@
-import java.io.IOException;
-import java.util.StringTokenizer;
 import org.apache.hadoop.fs.Path;
-
-// AverageWordLength Import types for intermediate key and value, output key and value.
-
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.FloatWritable;
 import org.apache.hadoop.io.Text;
-
 import org.apache.hadoop.mapred.FileInputFormat;
 import org.apache.hadoop.mapred.FileOutputFormat;
 import org.apache.hadoop.mapred.JobClient;
@@ -22,15 +16,14 @@ public class AverageWordLengthDriver extends Configured implements Tool {
 	public int run(String[] args) throws Exception {
 	
 		if (args.length != 2) {
-			System.out.printf(
-				"Usage: %s [generic options] <indir> <output dir>\n", 
+			System.out.printf("Usage: %s [generic options] <indir> <outdir>\n", 
 				getClass().getSimpleName());
 			ToolRunner.printGenericCommandUsage(System.out);
 			System.exit(-1);
 		}
 
 		JobConf conf = new JobConf(getConf(), AverageWordLengthDriver.class);
-		conf.setJobName("AverageWordLengthDriver");
+		conf.setJobName("AverageWordLength");
 
 		FileInputFormat.setInputPaths(conf, new Path(args[0]));
 		FileOutputFormat.setOutputPath(conf, new Path(args[1]));

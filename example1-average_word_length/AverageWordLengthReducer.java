@@ -1,9 +1,6 @@
 import java.io.IOException;
 import java.util.Iterator;
 
-// AverageWordLength Import types for input and output keys and values.
-
-import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.FloatWritable;
 import org.apache.hadoop.io.Text;
@@ -26,10 +23,11 @@ public class AverageWordLengthReducer extends MapReduceBase
 		int count = 0;
 
 		while (values.hasNext()) {
-			sum += values.next().get();
 			count += 1;
+			sum += values.next().get();
 		}
-		avg.set(count/sum);
-		output.collect( key , avg );
+
+		avg.set((float) count / sum);
+		output.collect(key, avg);
 	}
 }
