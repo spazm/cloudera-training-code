@@ -1,0 +1,20 @@
+hamlet@0		HAMLET
+hamlet@8	
+hamlet@9	
+hamlet@10		DRAMATIS PERSONAE
+hamlet@29	
+hamlet@30	
+hamlet@31	CLAUDIUS	king of Denmark. (KING CLAUDIUS:)
+hamlet@74	
+hamlet@75	HAMLET	son to the late, and nephew to the present king.
+hamlet@131	
+hamlet@132	POLONIUS	lord chamberlain. (LORD POLONIUS:)
+hamlet@176	
+hamlet@177	HORATIO	friend to Hamlet.
+hamlet@203	
+hamlet@204	LAERTES	son to Polonius.
+hamlet@229	
+hamlet@230	LUCIANUS	nephew to the king.
+hamlet@259	
+hamlet@260	
+hamlet@261	VOLTIMAND	|
