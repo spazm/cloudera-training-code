@@ -11,10 +11,15 @@ sub map
 {
 	my ($self,$line)   = @_;
 	my ($key, $value)  = split (/\t/, $line, 2);
-	#my ($name,$offset) = split( /\@/, $key, 2);
+	my ($name,$offset) = split( /\@/, $key, 2);
 	my @words = split(/\W+/, $value);
 	foreach my $word (@words)
 	{
+		$self->counter(
+				group   => 'shakespeare',
+				counter => $name,
+				amount  => 1,
+		);
 		$self->emit( $word, $key);
 	}
 }
